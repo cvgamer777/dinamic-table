@@ -10,7 +10,9 @@ export default class Mytable extends React.Component {
             },
             td: {
                 border: '1px solid black',
-                borderCollapse:'collapse'
+                borderCollapse:'collapse',
+                width: '40px',
+                height: '80px'
             }
            
         },
@@ -24,11 +26,12 @@ export default class Mytable extends React.Component {
             <div>
                 <table style={this.state.style.table}>
                     <tbody>
-                        <tr>
-                            <td style={this.state.style.td}>as {Json.stringify(this.state.rows)}</td>
-                        </tr>
+                    {this.state.rows.map((word,wordIdx)=> <tr key={wordIdx}>
+                        {[...word].map((char,charIdx)=>
+                            <td style={this.state.style.td}>{char}</td>
+                        )}
+                    </tr>)}
                     </tbody>
-                    
                 </table>
             </div>
         )
