@@ -13,7 +13,10 @@ export default class Mytable extends React.Component {
                 borderCollapse:'collapse'
             }
            
-        }
+        },
+        rows: [
+
+        ]
     }
     
     render () {
@@ -22,10 +25,7 @@ export default class Mytable extends React.Component {
                 <table style={this.state.style.table}>
                     <tbody>
                         <tr>
-                            <td style={this.state.style.td}>as</td>
-                            <td style={this.state.style.td}>asd</td>
-                            <td style={this.state.style.td}>asd</td>
-                            <td style={this.state.style.td}>asd</td>
+                            <td style={this.state.style.td}>as {Json.stringify(this.state.rows)}</td>
                         </tr>
                     </tbody>
                     
@@ -33,4 +33,9 @@ export default class Mytable extends React.Component {
             </div>
         )
     }
+    componentDidMount() {
+        const words = this.props.data.split(" ")
+        console.log('words',words)
+        this.setState({rows:words})
+    }   
 }
